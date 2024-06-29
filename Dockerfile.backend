@@ -1,6 +1,7 @@
 FROM golang:1.22 AS builder
 
 ARG APP_NAME
+ENV APP_NAME ${APP_NAME}
 
 WORKDIR /app
 
@@ -20,4 +21,4 @@ COPY --from=builder /app/${APP_NAME} .
 
 EXPOSE 8080
 
-CMD ["./${APP_NAME}"]
+CMD sh -c "./${APP_NAME}"
